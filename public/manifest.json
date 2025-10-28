@@ -1,0 +1,16 @@
+{
+    "name": "De Bar",
+    "short_name": "De Bar",
+    "background_color": "#000032",
+    "display": "standalone",
+    "description": "De bar web applicatie voor waterscouting De IJssel",
+    "theme_color": "#3A3A3A",
+    "start_url": "/",
+    "icons": [
+        {
+            "src": "logo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
