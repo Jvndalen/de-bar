@@ -15,7 +15,7 @@ return [
     |--------------------------------------------------------------------------
     | PWA Manifest Configuration
     |--------------------------------------------------------------------------
-    |  php artisan erag:update-manifest
+    |  php artisan erag=>update-manifest
     */
 
     'manifest' => [
@@ -31,6 +31,19 @@ return [
                 'sizes' => '512x512',
                 'type' => 'image/png',
             ],
+
+        [
+            "src"=> "logo.png",
+            "sizes"=> "512x512",
+            "type" => "image/png",
+            "purpose"=> "maskable"
+        ],
+        [
+            "src"=> "logo.png",
+            "sizes"=> "512x512",
+            "type" => "image/png",
+            "purpose"=> "any"
+        ]
         ],
     ],
 
