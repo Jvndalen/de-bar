@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('treat_balances', function (Blueprint $table) {
             $table->string('id', 30)->primary();
-            $table->text('user_id');
+            $table->foreignUuid('user_id');
             $table->float('initial_amount');
             $table->float('remaining_amount');
             $table->boolean('is_active')->default(true);

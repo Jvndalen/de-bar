@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->text('id')->primary();
             $table->text('product_id');
-            $table->text('user_id')->nullable();
+            $table->foreignUuid('user_id')->nullable();
             $table->float('total')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();

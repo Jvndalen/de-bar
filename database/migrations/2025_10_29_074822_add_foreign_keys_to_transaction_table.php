@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::table('transactions', function (Blueprint $table) {
             $table->foreign(['product_id'], 'transaction_product_id_product_id_fk')->references(['id'])->on('products')->onUpdate('no action')->onDelete('cascade');
             $table->foreign(['treat_balance_id'], 'transaction_treat_balance_id_treat_balance_id_fk')->references(['id'])->on('treat_balances')->onUpdate('no action')->onDelete('set null');
-            $table->foreign(['user_id'], 'transaction_user_id_user_id_fk')->references(['id'])->on('users')->onUpdate('no action')->onDelete('set null');
         });
     }
 
