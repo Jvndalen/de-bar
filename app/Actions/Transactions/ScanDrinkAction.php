@@ -78,14 +78,14 @@ class ScanDrinkAction
         int $priceInCents,
         bool $isDrawer
     ): array {
-        if ($user->rawBalance() < $priceInCents) {
-            return [
-                'success' => false,
-                'error' => $isDrawer
-                    ? "{$user->name} heeft niet genoeg saldo"
-                    : "Je hebt niet genoeg saldo",
-            ];
-        }
+//        if ($user->rawBalance() < $priceInCents) {
+//            return [
+//                'success' => false,
+//                'error' => $isDrawer
+//                    ? "{$user->name} heeft niet genoeg saldo"
+//                    : "Je hebt niet genoeg saldo",
+//            ];
+//        }
 
         try {
             $transactionId = RegisterTransaction::run(

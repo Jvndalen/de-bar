@@ -25,7 +25,7 @@ class RegisterTransaction
     {
         return DB::transaction(function () use ($userId, $productId, $amountInCents) {
 // Lock rows to prevent race conditions
-            $user = User::lockForUpdate()->findOrFail($userId);
+//            $user = User::lockForUpdate()->findOrFail($userId);
             $product = Product::lockForUpdate()->findOrFail($productId);
 
 // Validate stock
