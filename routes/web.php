@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TransactionController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -10,6 +11,17 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return Inertia::render('welcome');
 })->name('home');
+
+Route::get('/transactions/{user}', function (User $user) {
+    $transactions = $user->transactions()->with('product')->latest()->take(50)->get();
+
+    return Inertia::render('transactions', [
+        'user' => $user,
+        'transactions' => $transactions,
+    ]);
+})->name('transactions');
+
+Route::post('/transactions/{user}', [TransactionController::class, 'scanDrink'])->name('transactions.scan');
 
 Route::middleware([
     'auth',
