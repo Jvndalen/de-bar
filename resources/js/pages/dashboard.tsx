@@ -47,6 +47,8 @@ export default function Dashboard() {
     const { products, user, activeTreatBalance, flash } = usePage<PageProps>().props;
     const [isScanning, setIsScanning] = useState(false);
 
+    console.log(products, user, activeTreatBalance, flash);
+
     // Handle flash messages
     React.useEffect(() => {
         if (flash?.success) {
