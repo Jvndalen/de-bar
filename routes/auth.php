@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Requests\WorkOSAuthRequest;
 use Illuminate\Support\Facades\Route;
 use Laravel\WorkOS\Http\Requests\AuthKitAuthenticationRequest;
 use Laravel\WorkOS\Http\Requests\AuthKitLoginRequest;
@@ -9,7 +10,7 @@ Route::get('login', function (AuthKitLoginRequest $request) {
     return $request->redirect();
 })->middleware(['guest'])->name('login');
 
-Route::get('authenticate', function (AuthKitAuthenticationRequest $request) {
+Route::get('authenticate', function (WorkOSAuthRequest $request) {
     return tap(to_route('dashboard'), fn () => $request->authenticate());
 })->middleware(['guest']);
 
