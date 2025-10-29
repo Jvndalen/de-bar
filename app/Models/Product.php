@@ -33,7 +33,7 @@ class Product extends Model
 
     public function scopeAvailable($query)
     {
-        return $query->active()->inStock();
+        return $query->inStock();
     }
 
     public function isInStock(): bool

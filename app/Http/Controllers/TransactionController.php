@@ -32,7 +32,7 @@ class TransactionController extends Controller
             ], 400);
         }
 
-        return response()->json([
+        return back()->with('success', [
             'message' => $result['message'],
             'transaction_id' => $result['transaction_id'],
             'type' => $result['type'],

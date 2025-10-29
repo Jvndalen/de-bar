@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\TransactionController;
+use App\Models\Product;
+use App\Models\TreatBalance;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,9 +29,22 @@ Route::middleware([
     'auth',
     ValidateSessionWithWorkOS::class,
 ])->group(function () {
-    Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
+    Route::get('/dashboard', function () {
+        $user = auth()->user();
+
+        return Inertia::render('dashboard', [
+            'products' => Product::available()->get(),
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'balance' => $user->rawBalance(),
+            ],
+            'activeTreatBalance' => TreatBalance::where('user_id', $user->id)
+                ->active()
+                ->first(),
+        ]);
     })->name('dashboard');
+
 
     Route::get('/checkout', function (Request $request) {
         $stripePriceId = getenv('STRIPE_PRICE_ID');
