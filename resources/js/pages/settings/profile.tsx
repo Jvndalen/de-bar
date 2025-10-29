@@ -21,7 +21,6 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function Profile() {
     const { auth } = usePage<SharedData>().props;
-
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Profile settings" />
@@ -29,6 +28,8 @@ export default function Profile() {
             <SettingsLayout>
                 <div className="space-y-6">
                     <HeadingSmall title="Profile information" description="Update your name and email address" />
+
+                    <HeadingSmall title="Balance" description={`Your current account balance is ` + auth.balance}/>
 
                     <Form
                         {...update.form()}
